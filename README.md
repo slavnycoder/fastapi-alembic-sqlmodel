@@ -1,3 +1,5 @@
+### Basic FastAPI, SQLModel, Alembic
+
 To generate new migration run from "project" dir
 ```
 alembic revision --autogenerate -m "Migrations name"
