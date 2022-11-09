@@ -1,0 +1,2 @@
+from "project" dir
+alembic revision --autogenerate -m "Migrations name"

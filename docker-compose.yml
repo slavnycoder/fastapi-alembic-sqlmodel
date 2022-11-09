@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  web:
+    build: ./project
+    command: ./run/fastapi.sh
+    environment:
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@db:5432/postgres
+    volumes:
+      - ./project:/usr/src/metach_be/:ro
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_PASSWORD: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - ~/dbs/fastapi_psql/data:/var/lib/postgresql/data
